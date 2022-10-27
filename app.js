@@ -34,11 +34,12 @@ var createNewTaskElement=function(taskString){
 
     label.innerText=taskString;
     label.className='task';
+    label.classList.add("task__item-label")
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    // editInput.className="task";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="edit";
@@ -46,6 +47,8 @@ var createNewTaskElement=function(taskString){
     deleteButton.className="delete";
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
+
+    editInput.classList.add("input--type-text--hidden")
 
 
     //and appending.
@@ -65,11 +68,14 @@ var addTask=function(){
     if (!taskInput.value) return;
     var listItem=createNewTaskElement(taskInput.value);
 
+
     //Append listItem to incompleteTaskHolder
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
     taskInput.value="";
+
+
 
 }
 
@@ -96,10 +102,15 @@ var editTask=function(){
     }else{
         editInput.value=label.innerText;
         editBtn.innerText="Save";
+
+        // editInput.classList.add("input--type-text--hidden");
     }
 
     //toggle .edit-mode on the parent.
     listItem.classList.toggle("edit-mode");
+
+    editInput.classList.add("input--type-text");
+    editInput.classList.toggle("input--type-text--hidden");
 };
 
 
@@ -122,7 +133,11 @@ var taskCompleted=function(){
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
+    const labelElement = listItem.querySelector(".task__item-label")
+    labelElement.classList.toggle("task__item-label--completed")
+
     bindTaskEvents(listItem, taskIncomplete);
+
 
 }
 
@@ -134,6 +149,8 @@ var taskIncomplete=function(){
     //Append the task list item to the #incomplete-tasks.
     var listItem=this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
+    const labelElement = listItem.querySelector(".task__item-label")
+    labelElement.classList.toggle("task__item-label--completed")
     bindTaskEvents(listItem,taskCompleted);
 }
 
