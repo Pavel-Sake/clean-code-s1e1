@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="style.css" media="screen">
 </head>
 <body>
-<div class="preview">
+<article class="preview">
     <img src="./eisenhower-matrix.jpg">
     <a
         class="preview__more-inf"
         href="https://goal-life.com/page/method/matrix-eisenhower">
         Want more details?
     </a>
-</div>
-<div class="main">
-    <p id="add-task">
+</article>
+<section class="main">
+    <div id="add-task">
         <label class="label_new-task" for="new-task">Add Item</label>
         <div class="add-task__row-wrapper">
             <input
@@ -25,7 +25,7 @@
                 type="text">
             <button>Add</button>
         </div>
-    </p>
+    </div>
 
     <h3 class="title">Todo</h3>
     <ul id="incomplete-tasks">
@@ -63,7 +63,7 @@
             </button>
         </li>
     </ul>
-</div>
+</section>
 <script src="app.js"></script>
 </body>
 </html>
